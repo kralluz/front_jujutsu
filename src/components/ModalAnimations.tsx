@@ -1,7 +1,6 @@
-// UnfoldingModal.tsx
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import "./ModalAnimations.css"; // Ensure this path is correct based on your project structure
+import "./ModalAnimations.css";
 
 interface UnfoldingModalProps {
   isOpen: boolean;
@@ -17,21 +16,16 @@ const UnfoldingModal: React.FC<UnfoldingModalProps> = ({
   className = "",
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
-      setIsAnimating(true);
       document.body.classList.add("modal-active");
     } else if (isVisible) {
-      setIsAnimating(true);
-      // Start closing animation
       const timer = setTimeout(() => {
         setIsVisible(false);
-        setIsAnimating(false);
         document.body.classList.remove("modal-active");
-      }, 1000); // Duration should match the CSS animation duration
+      }, 500); // Reduzi para 500ms para maior fluidez
 
       return () => clearTimeout(timer);
     }
@@ -43,7 +37,7 @@ const UnfoldingModal: React.FC<UnfoldingModalProps> = ({
   };
 
   const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation(); // Prevent closing when clicking inside the modal
+    e.stopPropagation();
   };
 
   if (!isVisible) return null;
@@ -51,14 +45,17 @@ const UnfoldingModal: React.FC<UnfoldingModalProps> = ({
   return ReactDOM.createPortal(
     <div
       id="unfolding-modal-container"
-      className={`${isOpen ? "open" : "closing"} ${className}`}
+      className={`modal-container ${isOpen ? "open" : "closing"} ${className}`}
       onClick={handleContainerClick}
     >
-      <div className="modal-background">
+      <div className="modal-overlay">
         <div
-          className={`modal ${!isOpen && "closing"}`}
+          className={`modal-content ${!isOpen ? "closing" : ""}`}
           onClick={handleModalClick}
         >
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fechar Modal">
+            &times;
+          </button>
           {children}
         </div>
       </div>

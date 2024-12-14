@@ -1,21 +1,41 @@
-# React + TypeScript + Vite
+# Trabalho de Programação Web 1
+## Curso de Sistemas de Informação - IF Goiano Campus Ceres
+### Professor: Vilson
+### Alunos:
+- Carlos Henrique
+- Felipe Gomes
+- Iago José
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição do Projeto
 
-While this project uses React, Vite supports many popular JS frameworks. [See all the supported frameworks](https://vitejs.dev/guide/#scaffolding-your-first-vite-project).
+Este projeto é uma aplicação web desenvolvida como parte do curso de Sistemas de Informação, na disciplina de Programação Web 1, ministrada pelo professor Vilkson no IF Goiano Campus Ceres. O objetivo principal deste trabalho é demonstrar a implementação de um sistema CRUD (Create, Read, Update, Delete) utilizando JavaScript, aplicando os conceitos ensinados em sala de aula.
 
-## Deploy Your Own
+## Sistema Wiki de Jujutsu Kaisen
 
-Deploy your own Vite project with Vercel.
+O sistema desenvolvido é uma wiki dedicada ao anime e mangá Jujutsu Kaisen. A aplicação possui as seguintes funcionalidades e telas:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/vite-react&template=vite-react)
+### Telas do Sistema
 
-_Live Example: https://vite-react-example.vercel.app_
+- `/register`: Tela de registro de novos usuários.
+- `/session`: Tela de login e gerenciamento de sessão.
+- Tela principal: Exibição e navegação pelos conteúdos da wiki.
 
-### Deploying From Your Terminal
+## Objetivo
 
-You can deploy your new Vite project with a single command from your terminal using [Vercel CLI](https://vercel.com/download):
+O objetivo deste projeto é proporcionar uma experiência prática na implementação de um sistema CRUD, utilizando JavaScript para manipulação de dados e interação com o usuário. Através deste trabalho, buscamos consolidar os conhecimentos adquiridos durante a disciplina e demonstrar a aplicação prática dos conceitos teóricos.
 
-```shell
-$ vercel
-```
+## Tecnologias Utilizadas
+
+- HTML5
+- CSS3
+- Vite
+- React
+- JavaScript
+- Node.js v18
+- Banco de Dados em memoria array js
+
+## Conclusão
+
+Este projeto representa um esforço conjunto dos alunos Carlos Henrique, Felipe Gomes e Iago José para aplicar os conhecimentos adquiridos na disciplina de Programação Web 1. Através da criação de uma wiki sobre Jujutsu Kaisen, buscamos demonstrar nossa capacidade de desenvolver uma aplicação web funcional e bem estruturada, utilizando as tecnologias e práticas recomendadas pelo professor Vilkson.
+
+Agradecemos a orientação e suporte do professor Vilkson durante o desenvolvimento deste trabalho.

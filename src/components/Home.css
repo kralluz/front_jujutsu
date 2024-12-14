@@ -150,3 +150,27 @@
   font-size: 12px;
   margin: 0;
 }
+
+
+.add-button-container {
+  position: absolute; /* Faz o botão se posicionar em relação ao contêiner mais próximo com posição relativa */
+  top: 20px; /* Espaçamento em relação ao topo */
+  right: 20px; /* Espaçamento em relação à direita */
+  z-index: 10; /* Garante que o botão fique acima de outros elementos, se necessário */
+}
+
+.add-character-button {
+  background-color: #02A09D;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.add-character-button:hover {
+  background-color: #028b89;
+}

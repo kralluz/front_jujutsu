@@ -1,8 +1,8 @@
-// src/components/Home.tsx
 import React, { useContext, useState } from "react";
 import { CharactersContext, Character } from "../contexts/CharactersContext";
 import "./Home.css";
 import CharacterDetails from "./CharacterDetailsModal";
+import CharacterEdit from "./CharacterEdit";
 
 const Home: React.FC = () => {
   const charactersContext = useContext(CharactersContext);
@@ -11,10 +11,11 @@ const Home: React.FC = () => {
     return <div className="loading">Carregando...</div>;
   }
 
-  const { characters, createCharacter } = charactersContext;
+  const { characters, createCharacter, deleteCharacter, updateCharacter } =
+    charactersContext;
 
   const handleAddCharacter = () => {
-    const newCharacter = {
+    const newCharacter: any = {
       name: "Novo Personagem",
       age: "Desconhecido",
       bio: "Biografia do novo personagem",
@@ -29,10 +30,21 @@ const Home: React.FC = () => {
     createCharacter(newCharacter);
   };
 
-  const [isDetailsOpen, setIsDetailsOpen] = useState<boolean>(false);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
     null
   );
+
+  const openEdit = (character: Character) => {
+    setSelectedCharacter(character);
+    setIsEditOpen(true);
+  };
+
+  const closeEdit = () => {
+    setSelectedCharacter(null);
+    setIsEditOpen(false);
+  };
 
   const openDetails = (character: Character) => {
     setSelectedCharacter(character);
@@ -46,11 +58,30 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-container">
-      <h1 className="title">Personagens</h1>
       <div className="add-button-container">
         <button onClick={handleAddCharacter} className="add-character-button">
           Adicionar Personagem
         </button>
+      </div>
+
+      <div
+        className="site-introduction"
+        style={{
+          textAlign: "left",
+          margin: "20px 0",
+          padding: "20px",
+          borderRadius: "10px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <h2 style={{ fontSize: "2rem", color: "#333" }}>
+          Bem-vindo à Wiki de Jujutsu Kaisen
+        </h2>
+        <p style={{ fontSize: "1.2rem", color: "#666" }}>
+          Explore informações detalhadas sobre os personagens do anime e mangá
+          Jujutsu Kaisen. Navegue pelos perfis dos personagens, descubra suas
+          habilidades e histórias.
+        </p>
       </div>
 
       <div className="characters-container">
@@ -59,7 +90,6 @@ const Home: React.FC = () => {
             key={character.id}
             className="character-card"
             onClick={() => openDetails(character)}
-            style={{ cursor: "pointer" }} // Indica que o cartão é clicável
           >
             <div className="banner">
               <img
@@ -83,12 +113,29 @@ const Home: React.FC = () => {
         ))}
       </div>
 
-      {/* Modal de Detalhes do Personagem */}
-      <CharacterDetails
-        isOpen={isDetailsOpen}
-        onClose={closeDetails}
-        character={selectedCharacter}
-      />
+      {selectedCharacter && (
+        <>
+          <CharacterDetails
+            isOpen={isDetailsOpen}
+            onClose={closeDetails}
+            character={selectedCharacter}
+            onEdit={() => openEdit(selectedCharacter)}
+            onDelete={() => {
+              deleteCharacter(selectedCharacter.id as number);
+              closeDetails();
+            }}
+          />
+          <CharacterEdit
+            isOpen={isEditOpen}
+            onClose={closeEdit}
+            character={selectedCharacter}
+            onSave={(id, updatedCharacter) => {
+              updateCharacter(id, updatedCharacter);
+              closeEdit();
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };

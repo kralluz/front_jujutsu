@@ -1,109 +1,156 @@
-  * {
-    box-sizing: border-box;
-  }
+body.modal-active {
+  overflow: hidden;
+}
 
-  body.modal-active {
-    overflow: hidden;
-    
-  }
+.modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out;
+}
 
-  #unfolding-modal-container {
-    position: fixed;
-    display: table;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    transform: scale(0);
-    z-index: 1000; /* Ensure modal is on top */
+.modal-container.closing {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  max-width: 1200px;
+  width: 90%;
+  animation: unfold 0.5s forwards;
+  position: relative;
+}
+
+.modal-content.closing {
+  animation: fold 0.5s forwards;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.modal-close-btn:hover {
+  color: #df5c0f;
+}
+
+@keyframes unfold {
+  from {
+    transform: scale(0.85);
     opacity: 0;
-    transition: opacity 0.3s ease;
   }
-
-  #unfolding-modal-container.open {
-    opacity: 1;
+  to {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fold {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+/* Estilos do conteúdo */
+.character-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.character-details h2 {
+  font-size: 2rem;
+  color: #035f9b;
+  margin-bottom: 1rem;
+}
+
+.character-profile-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5) !important;
+
+}
+
+
+.character-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.character-info-item {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.character-info-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #02a09d;
+}
+
+.character-info-item p {
+  margin: 0;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
   }
 
-  .modal-background {
-    display: table-cell;
-    background: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    vertical-align: middle;
+  .character-details h2 {
+    font-size: 1.5rem;
   }
-
-  .modal {
-    background: white;
-    padding: 50px;
-    display: inline-block;
-    border-radius: 3px;
-    font-weight: 300;
-    position: relative;
-    transform: scale(0);
-    animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-    cursor: default;
-  }
-
-  .modal h2 {
-    font-size: 25px;
-    line-height: 25px;
-    margin-bottom: 15px;
-  }
-
-  .modal p {
-    font-size: 18px;
-    line-height: 22px;
-  }
-
-  /* Animations */
-  @keyframes unfoldIn {
-    0% {
-      transform: scaleY(0.005) scaleX(0);
-    }
-    50% {
-      transform: scaleY(0.005) scaleX(1);
-    }
-    100% {
-      transform: scaleY(1) scaleX(1);
-    }
-  }
-
-  @keyframes unfoldOut {
-    0% {
-      transform: scaleY(1) scaleX(1);
-    }
-    50% {
-      transform: scaleY(0.005) scaleX(1);
-    }
-    100% {
-      transform: scaleY(0.005) scaleX(0);
-    }
-  }
-
-  @keyframes zoomIn {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes zoomOut {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-
-  /* Close animation */
-  #unfolding-modal-container.closing {
-    animation: unfoldOut 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-  }
-
-  .modal.closing {
-    animation: zoomOut 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-  }
-    
+}
