@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { CharactersContext, Character } from "../contexts/CharactersContext";
-import "./Home.css";
 import CharacterDetails from "./CharacterDetailsModal";
 import CharacterEdit from "./CharacterEdit";
+import CharacterCreate from "./CharacterCreate";
+import "./Home.css";
 
 const Home: React.FC = () => {
   const charactersContext = useContext(CharactersContext);
@@ -14,22 +15,7 @@ const Home: React.FC = () => {
   const { characters, createCharacter, deleteCharacter, updateCharacter } =
     charactersContext;
 
-  const handleAddCharacter = () => {
-    const newCharacter: any = {
-      name: "Novo Personagem",
-      age: "Desconhecido",
-      bio: "Biografia do novo personagem",
-      profileImage: "https://via.placeholder.com/150",
-      image: "https://via.placeholder.com/300",
-      powers: ["Poder desconhecido"],
-      domainExpansions: {
-        name: "Nenhum",
-        description: "",
-      },
-    };
-    createCharacter(newCharacter);
-  };
-
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
@@ -56,11 +42,19 @@ const Home: React.FC = () => {
     setIsDetailsOpen(false);
   };
 
+  const handleCreateCharacter = (newCharacter: Omit<Character, "id">) => {
+    createCharacter(newCharacter);
+    setIsCreateOpen(false);
+  };
+
   return (
     <div className="home-container">
       <div className="add-button-container">
-        <button onClick={handleAddCharacter} className="add-character-button">
-          Adicionar Personagem
+        <button
+          onClick={() => setIsCreateOpen(true)}
+          className="add-character-button"
+        >
+          Criar Personagem
         </button>
       </div>
 
@@ -112,6 +106,12 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
+
+      <CharacterCreate
+        isOpen={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+        onCreate={handleCreateCharacter}
+      />
 
       {selectedCharacter && (
         <>
