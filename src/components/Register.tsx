@@ -51,23 +51,59 @@ const Register: React.FC = () => {
   return (
     <div
       style={{
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#333",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundColor: "#121212",
         color: "#fff",
         padding: "20px",
-        maxWidth: "400px",
-        margin: "0 auto",
-        marginTop: "50px",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Registrar</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
+      <form
+        style={{
+          backgroundColor: "#1e1e1e",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          width: "100%",
+          maxWidth: "400px",
+        }}
+        onSubmit={handleSubmit}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Registrar</h2>
+        {error && (
+          <div
+            style={{
+              backgroundColor: "#ff4d4d",
+              color: "#fff",
+              padding: "10px",
+              borderRadius: "4px",
+              marginBottom: "20px",
+              textAlign: "center",
+            }}
+          >
+            {error}
+          </div>
+        )}
+        {successMessage && (
+          <div
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "#fff",
+              padding: "10px",
+              borderRadius: "4px",
+              marginBottom: "20px",
+              textAlign: "center",
+            }}
+          >
+            {successMessage}
+          </div>
+        )}
+        <div style={{ marginBottom: "20px" }}>
           <label
             htmlFor="user"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{ display: "block", marginBottom: "8px" }}
           >
             Usuário
           </label>
@@ -80,17 +116,17 @@ const Register: React.FC = () => {
             style={{
               width: "100%",
               padding: "10px",
-              border: "1px solid #ccc",
               borderRadius: "4px",
-              backgroundColor: "#555",
+              border: "1px solid #333",
+              backgroundColor: "#2e2e2e",
               color: "#fff",
             }}
           />
         </div>
-        <div style={{ marginBottom: "15px" }}>
+        <div style={{ marginBottom: "20px" }}>
           <label
             htmlFor="password"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{ display: "block", marginBottom: "8px" }}
           >
             Senha
           </label>
@@ -103,17 +139,17 @@ const Register: React.FC = () => {
             style={{
               width: "100%",
               padding: "10px",
-              border: "1px solid #ccc",
               borderRadius: "4px",
-              backgroundColor: "#555",
+              border: "1px solid #333",
+              backgroundColor: "#2e2e2e",
               color: "#fff",
             }}
           />
         </div>
-        <div style={{ marginBottom: "15px" }}>
+        <div style={{ marginBottom: "20px" }}>
           <label
             htmlFor="confirmPassword"
-            style={{ display: "block", marginBottom: "5px" }}
+            style={{ display: "block", marginBottom: "8px" }}
           >
             Confirmar Senha
           </label>
@@ -126,9 +162,9 @@ const Register: React.FC = () => {
             style={{
               width: "100%",
               padding: "10px",
-              border: "1px solid #ccc",
               borderRadius: "4px",
-              backgroundColor: "#555",
+              border: "1px solid #333",
+              backgroundColor: "#2e2e2e",
               color: "#fff",
             }}
           />
@@ -138,21 +174,40 @@ const Register: React.FC = () => {
           style={{
             width: "100%",
             padding: "10px",
-            backgroundColor: "#4CAF50",
-            color: "#fff",
-            border: "none",
             borderRadius: "4px",
+            border: "none",
+            backgroundColor: "#0077cc",
+            color: "#fff",
             cursor: "pointer",
-            fontSize: "16px",
           }}
         >
           Registrar
         </button>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          <p
+            style={{
+              color: "#ccc",
+              fontSize: "14px",
+            }}
+          >
+            Já tem uma conta?{" "}
+            <a
+              style={{
+                color: "#0077cc",
+                textDecoration: "none",
+              }}
+              href="/login"
+            >
+              Fazer login
+            </a>
+          </p>
+        </div>
       </form>
-      {error && <p style={{ color: "red", marginTop: "15px" }}>{error}</p>}
-      {successMessage && (
-        <p style={{ color: "green", marginTop: "15px" }}>{successMessage}</p>
-      )}
     </div>
   );
 };
