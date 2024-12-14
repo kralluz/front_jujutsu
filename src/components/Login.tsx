@@ -69,7 +69,10 @@ const Login: React.FC = () => {
           </div>
         )}
         <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="user" style={{ display: "block", marginBottom: "8px" }}>
+          <label
+            htmlFor="user"
+            style={{ display: "block", marginBottom: "8px" }}
+          >
             Usuário
           </label>
           <input
@@ -90,7 +93,10 @@ const Login: React.FC = () => {
           />
         </div>
         <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="password" style={{ display: "block", marginBottom: "8px" }}>
+          <label
+            htmlFor="password"
+            style={{ display: "block", marginBottom: "8px" }}
+          >
             Senha
           </label>
           <input
@@ -124,31 +130,31 @@ const Login: React.FC = () => {
         >
           Login
         </button>
-      </form>
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "20px",
-        }}
-      >
-        <p
+        <div
           style={{
-            color: "#ccc",
-            fontSize: "14px",
+            textAlign: "center",
+            marginTop: "20px",
           }}
         >
-          Não tem uma conta?{" "}
-          <a
+          <p
             style={{
-              color: "#0077cc",
-              textDecoration: "none",
+              color: "#ccc",
+              fontSize: "14px",
             }}
-            href="/register"
           >
-            Criar conta
-          </a>
-        </p>
-      </div>
+            Não tem uma conta?{" "}
+            <a
+              style={{
+                color: "#0077cc",
+                textDecoration: "none",
+              }}
+              href="/register"
+            >
+              Criar conta
+            </a>
+          </p>
+        </div>
+      </form>
     </div>
   );
 };
