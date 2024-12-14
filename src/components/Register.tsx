@@ -6,12 +6,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { AccountsProvider, AccountsContext } from "./contexts/AccountsContext";
-import { CharactersProvider } from "./contexts/CharactersContext";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Manager from "./components/Manager";
 import { Container } from "@chakra-ui/react";
 
 const App: React.FC = () => {
