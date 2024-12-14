@@ -1,0 +1,152 @@
+/* Home.css */
+
+.home-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 10px;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+}
+
+.add-button-container {
+  text-align: center;
+}
+
+.add-character-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.add-character-button:hover {
+  background-color: #45a049;
+  transform: scale(1.1);
+}
+
+.characters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.character-card {
+  width: 250px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 1s ease,
+    border-radius 0.3s ease;
+  position: relative;
+  background-color: #fff;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(92, 75, 151, 0.5);
+  border-image-slice: 1;
+  border-radius: 10px;
+  animation: aura-effect 1.5s infinite;
+}
+
+/* Adicionado: Efeito de blur na imagem do banner ao fazer hover no cartão */
+.character-card:hover .banner-image {
+  filter: brightness(0.7) blur(5px);
+}
+
+.character-card:hover::after {
+  content: "Ver Detalhes";
+  text-align: center;
+  position: absolute;
+  top: 24%;
+  left: 59%;
+  transform: translateX(-50%) scale(1.7);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+@keyframes aura-effect {
+  0% {
+    box-shadow:
+      0 0 20px rgba(92, 75, 151, 0.5),
+      0 0 40px rgba(157, 143, 178, 0.3),
+      0 0 60px rgba(188, 189, 211, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(92, 75, 151, 0.7),
+      0 0 50px rgba(157, 143, 178, 0.5),
+      0 0 80px rgba(188, 189, 211, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(92, 75, 151, 0.5),
+      0 0 40px rgba(157, 143, 178, 0.3),
+      0 0 60px rgba(188, 189, 211, 0.2);
+  }
+}
+
+.banner {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.banner-image {
+  width: 100%;
+  object-fit: cover;
+  height: 120px;
+  filter: brightness(0.7);
+  transition: filter 0.3s ease;
+}
+
+.profile-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: 3px solid white;
+  background-color: #fff;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.character-info {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  text-align: right;
+}
+
+.character-name {
+  font-size: 16px;
+  margin: 0;
+}
+
+.character-age {
+  font-size: 12px;
+  margin: 0;
+}

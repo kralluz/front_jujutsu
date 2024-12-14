@@ -68,6 +68,30 @@ const Login: React.FC = () => {
           Login
         </button>
       </form>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "20px",
+        }}
+      >
+        <p
+          style={{
+            color: "#333",
+            fontSize: "14px",
+          }}
+        >
+          Não tem uma conta?{" "}
+          <a
+            style={{
+              color: "#0077cc",
+              textDecoration: "none", 
+            }}
+            href="/register"
+          >
+            Criar conta
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

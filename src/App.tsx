@@ -18,11 +18,9 @@ const App: React.FC = () => {
   return (
     <AccountsProvider>
       <CharactersProvider>
-        <Router>
-          <Container maxW="container.md" p={4}>
-            <AuthRoutes />
-          </Container>
-        </Router>
+        <Container p={0}>
+          <AuthRoutes />
+        </Container>
       </CharactersProvider>
     </AccountsProvider>
   );

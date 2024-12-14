@@ -1,0 +1,109 @@
+  * {
+    box-sizing: border-box;
+  }
+
+  body.modal-active {
+    overflow: hidden;
+    
+  }
+
+  #unfolding-modal-container {
+    position: fixed;
+    display: table;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    z-index: 1000; /* Ensure modal is on top */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #unfolding-modal-container.open {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .modal-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .modal {
+    background: white;
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+    transform: scale(0);
+    animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    cursor: default;
+  }
+
+  .modal h2 {
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+
+  .modal p {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* Animations */
+  @keyframes unfoldIn {
+    0% {
+      transform: scaleY(0.005) scaleX(0);
+    }
+    50% {
+      transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+      transform: scaleY(1) scaleX(1);
+    }
+  }
+
+  @keyframes unfoldOut {
+    0% {
+      transform: scaleY(1) scaleX(1);
+    }
+    50% {
+      transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+      transform: scaleY(0.005) scaleX(0);
+    }
+  }
+
+  @keyframes zoomIn {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes zoomOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  /* Close animation */
+  #unfolding-modal-container.closing {
+    animation: unfoldOut 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+
+  .modal.closing {
+    animation: zoomOut 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+  }
+    
