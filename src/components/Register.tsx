@@ -201,7 +201,7 @@ const Register: React.FC = () => {
                 color: "#0077cc",
                 textDecoration: "none",
               }}
-              href="/login"
+              href="/session"
             >
               Fazer login
             </a>
