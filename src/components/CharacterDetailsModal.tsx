@@ -30,9 +30,13 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     color: "#fff",
+                    maxWidth: "600px",
+                    margin: "0 auto",
+                    overflowY: "auto",
+                    maxHeight: "80vh",
                 }}
             >
-                <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+                <div style={{ display: "flex", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
                     <img
                         src={character.profileImage}
                         alt={`${character.name} Profile`}
@@ -41,9 +45,10 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                             height: "80px",
                             borderRadius: "8px",
                             marginRight: "20px",
+                            marginBottom: "10px",
                         }}
                     />
-                    <div>
+                    <div style={{ flex: "1 1 200px" }}>
                         <h2
                             style={{
                                 fontSize: "1.8rem",
@@ -114,6 +119,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                         justifyContent: "flex-end",
                         gap: "10px",
                         marginTop: "20px",
+                        flexWrap: "wrap",
                     }}
                 >
                     <button
@@ -127,6 +133,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                             cursor: "pointer",
                             fontSize: "1rem",
                             fontWeight: "bold",
+                            flex: "1 1 100px",
                         }}
                     >
                         Editar
@@ -142,6 +149,7 @@ const CharacterDetails: React.FC<CharacterDetailsProps> = ({
                             cursor: "pointer",
                             fontSize: "1rem",
                             fontWeight: "bold",
+                            flex: "1 1 100px",
                         }}
                     >
                         Excluir
