@@ -2,7 +2,6 @@
 import React, { useState, useContext } from "react";
 import { AccountsContext } from "../contexts/AccountsContext";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
 
 const Login: React.FC = () => {
   const accountsContext = useContext(AccountsContext);
@@ -32,12 +31,45 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="login-heading">Login</h2>
-        {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label htmlFor="user" className="form-label">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundColor: "#121212",
+        color: "#fff",
+        padding: "20px",
+      }}
+    >
+      <form
+        style={{
+          backgroundColor: "#1e1e1e",
+          padding: "20px",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          width: "100%",
+          maxWidth: "400px",
+        }}
+        onSubmit={handleSubmit}
+      >
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Login</h2>
+        {error && (
+          <div
+            style={{
+              backgroundColor: "#ff4d4d",
+              color: "#fff",
+              padding: "10px",
+              borderRadius: "4px",
+              marginBottom: "20px",
+              textAlign: "center",
+            }}
+          >
+            {error}
+          </div>
+        )}
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="user" style={{ display: "block", marginBottom: "8px" }}>
             Usuário
           </label>
           <input
@@ -47,11 +79,18 @@ const Login: React.FC = () => {
             onChange={(e) => setUser(e.target.value)}
             placeholder="Digite seu usuário"
             required
-            className="form-input"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "4px",
+              border: "1px solid #333",
+              backgroundColor: "#2e2e2e",
+              color: "#fff",
+            }}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password" className="form-label">
+        <div style={{ marginBottom: "20px" }}>
+          <label htmlFor="password" style={{ display: "block", marginBottom: "8px" }}>
             Senha
           </label>
           <input
@@ -61,10 +100,28 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Digite sua senha"
             required
-            className="form-input"
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "4px",
+              border: "1px solid #333",
+              backgroundColor: "#2e2e2e",
+              color: "#fff",
+            }}
           />
         </div>
-        <button type="submit" className="login-button">
+        <button
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "10px",
+            borderRadius: "4px",
+            border: "none",
+            backgroundColor: "#0077cc",
+            color: "#fff",
+            cursor: "pointer",
+          }}
+        >
           Login
         </button>
       </form>
@@ -76,7 +133,7 @@ const Login: React.FC = () => {
       >
         <p
           style={{
-            color: "#333",
+            color: "#ccc",
             fontSize: "14px",
           }}
         >
@@ -84,7 +141,7 @@ const Login: React.FC = () => {
           <a
             style={{
               color: "#0077cc",
-              textDecoration: "none", 
+              textDecoration: "none",
             }}
             href="/register"
           >

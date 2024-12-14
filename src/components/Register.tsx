@@ -20,31 +20,26 @@ const Register: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>("");
 
   const handleRegister = () => {
-    // Validação: Verifica se as senhas coincidem
     if (password !== confirmPassword) {
       setError("As senhas não coincidem.");
       return;
     }
 
-    // Validação: Verifica se o usuário já existe
     const userExists = accounts.some((acc) => acc.user === user);
     if (userExists) {
       setError("Usuário já existe.");
       return;
     }
 
-    // Validação: Verifica se os campos estão preenchidos
     if (user.trim() === "" || password.trim() === "") {
       setError("Usuário e senha são obrigatórios.");
       return;
     }
 
-    // Cria a conta
     createAccount(user, password);
     setError("");
     setSuccessMessage("Conta criada com sucesso! Você pode agora fazer login.");
 
-    // Redireciona para a página de login após um tempo
     setTimeout(() => navigate("/session"), 2000);
   };
 
@@ -59,7 +54,12 @@ const Register: React.FC = () => {
         border: "1px solid #ccc",
         borderRadius: "8px",
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "#fff",
+        backgroundColor: "#333",
+        color: "#fff",
+        padding: "20px",
+        maxWidth: "400px",
+        margin: "0 auto",
+        marginTop: "50px",
       }}
     >
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Registrar</h2>
@@ -82,6 +82,8 @@ const Register: React.FC = () => {
               padding: "10px",
               border: "1px solid #ccc",
               borderRadius: "4px",
+              backgroundColor: "#555",
+              color: "#fff",
             }}
           />
         </div>
@@ -103,6 +105,8 @@ const Register: React.FC = () => {
               padding: "10px",
               border: "1px solid #ccc",
               borderRadius: "4px",
+              backgroundColor: "#555",
+              color: "#fff",
             }}
           />
         </div>
@@ -124,6 +128,8 @@ const Register: React.FC = () => {
               padding: "10px",
               border: "1px solid #ccc",
               borderRadius: "4px",
+              backgroundColor: "#555",
+              color: "#fff",
             }}
           />
         </div>
