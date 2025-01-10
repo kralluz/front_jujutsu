@@ -55,7 +55,7 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
     <UnfoldingModal isOpen={isOpen} onClose={onClose}>
       <div
         style={{
-          background: "rgba(255, 255, 255, 0.1)",
+          background: "#232323",
           padding: "20px",
           borderRadius: "10px",
           maxWidth: "600px",
